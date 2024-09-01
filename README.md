@@ -1,15 +1,3 @@
-# aoc2016
+## aoc2016
 
-To install dependencies:
-
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run src/index.js
-```
-
-This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Advent of Code 2016 Solutions in Javascript.
