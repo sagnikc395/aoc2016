@@ -1,17 +1,17 @@
 function isTLS(ip: string): boolean {
+  // Check for ABBA outside square brackets
   const outsideBrackets = ip.replace(/\[.*?\]/g, "");
-
   for (let i = 0; i < outsideBrackets.length - 3; i++) {
     const a = outsideBrackets[i];
     const b = outsideBrackets[i + 1];
     const c = outsideBrackets[i + 2];
     const d = outsideBrackets[i + 3];
-    if (a == d && b == c && a !== b) {
+    if (a === d && b === c && a !== b) {
       return true;
     }
   }
 
-  //ABBA check inside square brackets
+  // Check for ABBA inside square brackets
   const insideBrackets = ip.match(/\[.*?\]/g);
   if (insideBrackets) {
     for (const bracket of insideBrackets) {
@@ -26,16 +26,15 @@ function isTLS(ip: string): boolean {
       }
     }
   }
+
+  // If no ABBA is found inside square brackets, return true
   return true;
 }
 
-async function main() {
-  const file = Bun.file("./input.txt");
-  const data = await file.text();
+const file = Bun.file("./input.txt");
+const data = await file.text();
 
-  const content = data.split("\n").filter(isTLS).length;
-  console.log(content);
-}
+const count = data.split("\n").filter(isTLS).length;
+console.log(count);
 
-await main();
 export {};
